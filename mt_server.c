@@ -6,7 +6,7 @@
 /*   By: teppei <teppei@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/13 13:40:28 by teppei            #+#    #+#             */
-/*   Updated: 2021/08/13 17:43:27 by teppei           ###   ########.fr       */
+/*   Updated: 2021/08/14 00:28:58 by teppei           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ static int	get_end_pos(void)
 			break ;
 		i--;
 	}
-	//printf("end_pos: %d\n", i);
 	return (i);
 }
 
@@ -51,7 +50,6 @@ static int	bit_to_ascii(void)
 	i = -1;
 	while (++i < 7)
 		ascii += binary_pow(2, 6 - i) * g_bits[i];
-	printf("ascii: %d\n", ascii);
 	return (ascii);
 }
 
@@ -82,9 +80,6 @@ void	mt_sig_handler(int sig, siginfo_t *info, void *ucontext)
 	}
 	else
 		g_bits[end_pos] = new_bit;
-	int i = -1;
-	while (++i < 7)
-		printf("bits[%d]: %d\n", i, g_bits[i]);
 }
 
 int	main(void)
@@ -100,9 +95,6 @@ int	main(void)
 	sigemptyset(&sigusr.sa_mask);
 	sigusr.sa_flags = SA_SIGINFO;
 	mt_init_bits();
-	int i = -1;
-	while (++i < 7)
-		printf("bits[%d]: %d\n", i, g_bits[i]);
 	if (sigaction(SIGUSR1, &sigusr, NULL) < 0)
 		exit(1);
 	if (sigaction(SIGUSR2, &sigusr, NULL) < 0)
