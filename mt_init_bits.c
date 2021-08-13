@@ -1,30 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minitalk.h                                         :+:      :+:    :+:   */
+/*   mt_init_bits.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: teppei <teppei@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/13 13:01:02 by teppei            #+#    #+#             */
-/*   Updated: 2021/08/13 17:36:42 by teppei           ###   ########.fr       */
+/*   Created: 2021/08/13 15:31:17 by teppei            #+#    #+#             */
+/*   Updated: 2021/08/13 17:37:01 by teppei           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINITALK_H
-# define MINITALK_H
+#include "minitalk.h"
 
-# include <unistd.h>
-# include <signal.h>
-# include <stdlib.h>
-# include <stdio.h>
-# include <limits.h>
+void	mt_init_bits(void)
+{
+	int	i;
 
-int	g_bits[7];
-
-size_t	mt_ft_strlen(char *s);
-long	mt_ft_atoi(char *s);
-char	*mt_ft_itoa(long n);
-void	mt_ft_bzero(void *mem, size_t n);
-void	mt_init_bits(void);
-
-#endif
+	i = -1;
+	while (++i < 7)
+		g_bits[i] = -1;
+}

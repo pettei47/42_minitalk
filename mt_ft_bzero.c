@@ -1,30 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minitalk.h                                         :+:      :+:    :+:   */
+/*   mt_ft_bzero.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: teppei <teppei@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/13 13:01:02 by teppei            #+#    #+#             */
-/*   Updated: 2021/08/13 17:36:42 by teppei           ###   ########.fr       */
+/*   Created: 2021/08/13 14:45:54 by teppei            #+#    #+#             */
+/*   Updated: 2021/08/13 14:47:34 by teppei           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINITALK_H
-# define MINITALK_H
+#include "minitalk.h"
 
-# include <unistd.h>
-# include <signal.h>
-# include <stdlib.h>
-# include <stdio.h>
-# include <limits.h>
+void	*mt_ft_memset(void *s, int c, size_t n)
+{
+	size_t			i;
+	unsigned char	*q;
 
-int	g_bits[7];
+	i = 0;
+	q = (unsigned char *)s;
+	while (i < n)
+	{
+		q[i] = (unsigned char)c;
+		i++;
+	}
+	return (s);
+}
 
-size_t	mt_ft_strlen(char *s);
-long	mt_ft_atoi(char *s);
-char	*mt_ft_itoa(long n);
-void	mt_ft_bzero(void *mem, size_t n);
-void	mt_init_bits(void);
-
-#endif
+void	mt_ft_bzero(void *s, size_t n)
+{
+	mt_ft_memset(s, 0, n);
+}

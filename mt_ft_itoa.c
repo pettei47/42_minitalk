@@ -6,26 +6,11 @@
 /*   By: teppei <teppei@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/13 14:05:27 by teppei            #+#    #+#             */
-/*   Updated: 2021/08/13 14:25:07 by teppei           ###   ########.fr       */
+/*   Updated: 2021/08/13 15:34:11 by teppei           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
-
-void	*mt_ft_memset(void *s, int c, size_t n)
-{
-	size_t			i;
-	unsigned char	*q;
-
-	i = 0;
-	q = (unsigned char *)s;
-	while (i < n)
-	{
-		q[i] = (unsigned char)c;
-		i++;
-	}
-	return (s);
-}
 
 void	*mt_ft_calloc(size_t nmemb, size_t size)
 {
@@ -34,7 +19,7 @@ void	*mt_ft_calloc(size_t nmemb, size_t size)
 	mem = (void *)malloc(nmemb * size);
 	if (!mem)
 		return (NULL);
-	mt_ft_memset(mem, 0, nmemb * size);
+	mt_ft_bzero(mem, nmemb * size);
 	return (mem);
 }
 

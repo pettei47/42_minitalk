@@ -6,7 +6,7 @@
 #    By: teppei <teppei@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/23 12:46:40 by teppei            #+#    #+#              #
-#    Updated: 2021/08/13 14:38:15 by teppei           ###   ########.fr        #
+#    Updated: 2021/08/13 15:57:50 by teppei           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,6 +22,8 @@ CLIENT_OBJS	=	$(CLIENT_SRCS:.c=.o)
 SERVER_SRCS	=	mt_server.c \
 				mt_ft_itoa.c \
 				mt_ft_strlen.c \
+				mt_ft_bzero.c \
+				mt_init_bits.c \
 				
 SERVER_OBJS	=	$(SERVER_SRCS:.c=.o)
 OBJS		=	$(CLIENT_OBJS) $(SERVER_OBJS)
@@ -31,12 +33,12 @@ BONUS_NAME	= # your bonus target file
 
 all: $(NAME)
 
-$(NAME):$(CLIENT_NAME) $(SERVER_NAME)
+$(SERVER_NAME): $(SERVER_OBJS)
+	$(CC) $(CFLAGS) -o $(SERVER_NAME) $(SERVER_OBJS)
 
 $(CLIENT_NAME): $(CLIENT_OBJS)
 	$(CC) $(CFLAGS) -o $(CLIENT_NAME) $(CLIENT_OBJS)
-$(SERVER_NAME): $(SERVER_OBJS)
-	$(CC) $(CFLAGS) -o $(SERVER_NAME) $(SERVER_OBJS)
+
 .c.o: $(HEAD)
 	$(CC) $(CFLAGS) -c $< -o $@
 clean:
